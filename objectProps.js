@@ -69,6 +69,11 @@ for(let prop in person5){
 }
 // Above code will not print 'name' property as it has been set as non-enumerable
 
+console.log(person5.propertyIsEnumerable('name'));
+// To check if a property is enumerbale or not, we can know it by using propertyIsEnumerble('prop name')
+
+console.log('***********************************************************')
+
 let person6 = {};
 person6.fname = "abc";
 person6.lname = "xyz"
@@ -182,3 +187,93 @@ for(let prop in obj2){
         // are its own
     }
 }
+
+// Properties that are properties of the object itself are called Own properties
+// They are different from inherited properties as inherited ones are inherited from prototypes
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+// Alternative to for-in loop - 
+// Object.values() - returns an array containing the values of all the props of an object
+const obj5 = {
+    prop1: "some value",
+    prop2: 123,
+    prop3: "val"
+}
+const arr1 = Object.values(obj5);
+console.log(arr1)
+
+///////////////////////////////////////////////////////////////////////////////////
+
+// Object.entries() - returns an array consisting of sub-arrays having key-value pair as 2 elements
+
+const obj6 = {
+    p1: "hi",
+    p2: "bye",
+    p3: 12
+}
+const arr2 = Object.entries(obj6)
+console.log(arr2);
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+// Object.is() - Checks if two values are same or not
+// It works same as === but with two differences
+// -0 and +0 is same for === but ut us different for Object.is()
+console.log(-0 === +0)  // true
+console.log(Object.is(-0,+0))   // false
+
+console.log(NaN === NaN)    // gives false
+console.log(Object.is(NaN,NaN))     // gives true
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Object.create() - Allows us to create object based on another object
+const student = {
+    name:'jack',
+    age: 15,
+    subject: 5,
+    getName: function(){
+        return this.name;
+    }
+}
+
+const stu1 = Object.create(student);
+console.log(stu1.getName());
+stu1.name = 'jill'
+console.log(stu1.getName());
+
+///////////////////////////////////////////////////////////////////
+
+// Object Destructuring - 
+// Quick way of assigning properties of an object to variables
+
+const dest1 = {
+    name: 'Will',
+    car: 'porsche',
+    house: 'london'
+}
+
+const { name: fullName, car: carName, house: houseName } = dest1
+console.log(fullName + " - " + carName + " - " + houseName)
+// property name : variable name
+
+// If variable name is same, we can remove them
+const {name, car, house} = dest1
+console.log("Without variable name: "+name+" - "+car+" - "+house)
+
+// Destructuring a null object will throw type error
+
+// Nested Object Destructuring - 
+const nestedObj1 = {
+    name: {
+        initialname: 'pika',
+        surname: 'pokemon'
+    },
+    strength: 200,
+    vision: 97
+}
+
+const {name: {initialname,surname}} = nestedObj1
+console.log(initialname, surname)
+
