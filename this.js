@@ -1,5 +1,5 @@
 
-"use strict"
+// "use strict"
 // "this" in JS
 // this has different meaning depending upon where it is being used
 
@@ -94,4 +94,29 @@ obj4.test();
 
 // 4. Inside a nested method - returns undefined
 
+
+// "this" in arrow functions - 
+// Normally, every function when executed first creates an execution context for itself, in that execution 
+// context, we get global object and an empty "this", here, "this" is bound to the object that is created in 
+// that function
+
+// But arrow functions do not create any execution context for themselves, hence in arrow functions, 
+// "this" is taken lexically, i.e from next outer execution context
+
+const arrow1 = () => {
+    console.log(this);
+}
+
+arrow1(); // Returns global object
+
+// If any (unique) method is made using arrow function, then when it will be called by any object , it will 
+// give undefined as "this" will point to Global execution context and hence when it will try to access
+// a method which is not present in global object, it will return undefineds
+
+//////////////////////////////////////////////////////////////////////
+
+// Global this - 
+// Since different environments have different global objects, to standardize, globalThis is used
+// globalThis == global object in node JS
+// globalThis == window in browser
 
