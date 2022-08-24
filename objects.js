@@ -123,4 +123,109 @@ let p4 = new Person4('abc');
 // Anonymous Object -------Prototype-------> Object() constructor function (Object function's anonymous object)
 // Object() --------Prototype-------> Object's anonymous function
 
+/////////////////////////////////////////////////////////////////////
 
+// Adding methods to Person.Prototype
+Person4.prototype.greet = function(){
+    return "Hi , i am " + this.name;
+}
+
+// In above code, greet function will be added to the prototype of Person4 instead of each instance of Person4
+// object, i.e the prototype of Person4 will have greet function added to it. (This prototype is same as the anonymous object
+// having special constructor function as the Person4 function itself)
+
+// When we create an object using constructor function, the newly created object [[Prototype]] points to the 
+// anonymous object's constructor function of Person4() function
+
+// [[Prototype]] is called Prototype Linkage and it is through this we create prototype chaining
+// If an object doesn't have a method, it will go to its [[Prototype]], check if its there, if not, it will go
+// [[prototype's Prototype]], it will continue on till either it will find the method/property or it will reach 
+// the end of prototype chain. If a method/property doesn't exist, it will throw an error
+
+/////////////////////////////////////////////////////////
+
+// Defining methods on individual objects - 
+// If some individual method requires some property specific to itself, then the object itself will hold the 
+// property and not its prototype
+p4.hello = function(){
+    console.log('Hello');
+}
+// Only p4 object will have this function and not Person4.prototype.
+
+///////////////////////////////////////////////////////////////
+
+// Difference b/w prototype and __proto__ ([[Prototype]]) => 
+
+// Protoype = It is a property of a function which points to the anonymous function ( which contains the constructor function)
+// of that function
+// Only function has this property
+console.log(Person4.prototype);
+// Above command will return the anonymous object which has the constructor function in it
+
+// __proto__ = It is a property of an object which is created using new keyword
+// It points to the same anonymous function of the function based on whom the new object has been created
+
+console.log(p4.__proto__);
+
+// Both are pointing to the same thing, hence Person4.prototype and p4.__proto__  are same
+console.log(Person4.prototype == p4.__proto__);     // It is true
+
+// prototype is a property of a Function object. It is the prototype of objects constructed by that function.
+// __proto__ is an internal property of an object, pointing to its prototype.
+
+// Can also use Object.getPrototypeOf(p4) instead of __proto__
+console.log(Object.getPrototypeOf(p4));
+
+///////////////////////////////////////////////////////////////////////////
+
+// Shadowing - 
+// If an object has a function which is also present in one of the prototypes of that object, then when calling 
+// or using that property, the one closest to the object will be used. The closest property is said to have 
+// shadowed the same property in its prototype
+
+///////////////////////////////////////////////////////////////////////
+
+// JS Constructor/Prototype Pattern - 
+// If we create object based on some constructor function, and provide some methods in it, all objects we create will have 
+// the same properties as well as the methods defined. This is bad practice as for each individual object, even the common methods
+// are created for each object thereby causing memory wastage
+
+// To prevent this, we give the unique properties to the constructor function and give common properties and
+// methods to prototype of that object.
+// This is called Constructor/Prototype pattern.
+
+function Animal1(name, breed){
+    this.name = name;
+    this.breed = breed;
+}
+
+// Providing unique properties to constructor function (name,breed)
+
+Animal1.prototype.eat = function(){
+    console.log(this)
+    // this here logs the object which is calling it
+    console.log("I am eating")
+}
+
+let anim1 = new Animal1('bob','shephard');
+anim1.eat();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Prototypical Inheritance - 
+// An object when created using a 'new' keyword has all the properties of the object based on which it is created
+// This is called prototypical inheritance
+// Differs from normal inheritance as in JS, it is done through prototype linkage
+function Animal2(name, type){
+    this.name = name;
+    this.type = type;
+}
+
+let animal1 = new Animal2('brad','dog');
+let animal2 = new Animal2('henry','bull');
+
+// Both objects will have the properties of their prototypes (find it using animal1.__proto__)
+// Also, we can make animal1 prototype of animal2
+
+animal2.__proto__ = animal2 
+// __proto__  is not recommended to be used 
