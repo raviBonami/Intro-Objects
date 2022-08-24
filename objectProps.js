@@ -79,3 +79,4 @@ Object.defineProperty(person6,'fname',{
 console.log(person6.fname)
 person6.fname = "pqr";
 console.log(person6.fname) // Still it's value is "abc" as it is not writable
+
