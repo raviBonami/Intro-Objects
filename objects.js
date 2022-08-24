@@ -229,3 +229,7 @@ let animal2 = new Animal2('henry','bull');
 
 animal2.__proto__ = animal2 
 // __proto__  is not recommended to be used 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
