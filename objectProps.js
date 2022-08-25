@@ -198,9 +198,13 @@ for(let prop in obj2){
 const obj5 = {
     prop1: "some value",
     prop2: 123,
-    prop3: "val"
+    prop3: "val",
+    prop4: {
+        innerProp: "value inner"
+    }
 }
 const arr1 = Object.values(obj5);
+console.log("Object.values")
 console.log(arr1)
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -210,12 +214,32 @@ console.log(arr1)
 const obj6 = {
     p1: "hi",
     p2: "bye",
-    p3: 12
+    p3: 12,
+    p4: {
+        p5: "inner p5"
+    }
 }
 const arr2 = Object.entries(obj6)
+console.log("Object.entries")
 console.log(arr2);
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+const object1 = {
+    name: 'nolan',
+    age: 88,
+    hotel: 'raddison',
+    city: {
+        loc: "new delhi",
+        pass: true
+    }
+}
+
+const object1Keys = Object.keys(object1)
+console.log("Object.keys")
+console.log( object1Keys)
+
+///////////////////////////////////////////////////////////////////////////
 
 // Object.is() - Checks if two values are same or not
 // It works same as === but with two differences
