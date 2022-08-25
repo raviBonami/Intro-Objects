@@ -91,7 +91,7 @@ for(let ele of array1Iterable){
 }
 // Diff b/w for-in and for-of => for-in itreate over keys and for-of iterates over values
 
-// 6. every() - tests whether all elements pass certian test or not
+// 6. every() - tests whether all elements pass certian test or not, returns boolean
 const isBelow = x => x< 10;
 const arr15 = [3,5,19,23]
 console.log(arr15.every(isBelow)) // returns false
@@ -108,8 +108,7 @@ const words = ['pears','pea','apple','banana','orange','guava',[1,2,3],{name:'pe
 const filteredWords = words.filter(elem => elem.length > 5)
 console.log(filteredWords);
 // Always returns a new array
-// Also, it only creates shallow copy, so if nested element is present
-// it will only copy its reference
+// Also, it only creates shallow copy, so if nested element is present, it ignore them
 
 // 9. find() - returns the first element that satisfies the given condition
 // if couldn't find, returns undefined, also doesn't mutate the array
@@ -151,7 +150,7 @@ const array2 = [1,2,3,4,5];
 array2.forEach( (ele,index,arr) => arr[index] = arr[index] * 2)
 console.log(array2);
 
-// 14. Array from - creates array from any object that has length 
+// 14. Array.from - creates array from any object that has length 
 // property
 const str = "abcde"
 const arrayFrom = Array.from(str);
