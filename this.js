@@ -1,5 +1,9 @@
 
-// "use strict"
+"use strict"
+// In strict mode, the value of this remains as same as it was when it entered the execution context, so 
+// when normally we console.log(this), the execution context's 
+
+
 // "this" in JS
 // this has different meaning depending upon where it is being used
 
@@ -47,7 +51,7 @@ console.log(this);
 function fun2(){
     console.log(this);
 }
-fun2();
+// fun2();
 
 // 3. Inside a function inside an object (method) - Returns the object calling the function (object itself)
 let obj3 = {
@@ -56,7 +60,7 @@ let obj3 = {
         console.log(this);
     }
 }
-obj3.test();
+// obj3.test();
 
 // 4. Inside a function inside a function in an object - Returns undefined
 let obj4 = {
@@ -68,7 +72,7 @@ let obj4 = {
         inner();
     }
 }
-obj4.test();
+// obj4.test();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -107,7 +111,7 @@ const arrow1 = () => {
     console.log(this);
 }
 
-arrow1(); // Returns global object
+// arrow1(); // Returns global object
 
 // If any (unique) method is made using arrow function, then when it will be called by any object , it will 
 // give undefined as "this" will point to Global execution context and hence when it will try to access
