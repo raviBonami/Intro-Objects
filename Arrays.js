@@ -125,5 +125,144 @@ const findIndex = arr20.findIndex((x) => {
 console.log(findIndex)
 // returns -1 if no element is found
 
-// 11. findLast() - returns the index of last element that satisfies the
+// 11. findLast() - returns the last element that satisfies the
 // specified conditions
+// const lastIndex = arr20.findLast(ele => ele % 2 == 0)
+// console.log(lastIndex);
+
+// 12. flat() - creates and returns new array with all sub-arrays concatenated
+// into it recursively upto specified depth
+// const arr21 = [1,2,3,4,[5,6,[7,8,9]]]
+// const flattedArr1 = arr21.flat(1)
+// const flattedArr2 = arr21.flat(2)
+// const flattedArr3 = arr21.flat(3)
+// console.log(flattedArr1)
+// console.log(flattedArr2)
+// console.log(flattedArr3)
+// const arr23 = [1, 2, [3, 4]];
+// console.log(arr23.flat());
+// not available at current node
+
+// 13. forEach - executes provided function for each element
+// manipulates the same array , doesn't return new array
+// It doesn't wait for promises, works synchronously
+// doesn't do anything for empty values
+const array2 = [1,2,3,4,5];
+array2.forEach( (ele,index,arr) => arr[index] = arr[index] * 2)
+console.log(array2);
+
+// 14. Array from - creates array from any object that has length 
+// property
+const str = "abcde"
+const arrayFrom = Array.from(str);
+console.log(arrayFrom)
+
+// 15. includes - returns boolean of whether specified element
+// exists in array or not
+const array3 = [45,67,33,24]
+console.log(array3.includes(67));   // true
+console.log(array3.includes(89));   // false
+
+// 16. IndexOf - returns the first index of the element being searched
+console.log(array3.indexOf(67))
+console.log(array3.indexOf(25)) // -1
+
+// 17. isArray - whether an object being passed is an array or not
+const res1 = Array.isArray(array3);
+const res2 = Array.isArray('asdfg')
+console.log(res1, res2)
+
+// 18. join() - returns a string from an array with specifier being
+// added after each element
+console.log(array3.join(''))
+
+// 19. keys() - returns an array iterator consisting of keys of the array, in arrays case, keys are index of each element
+// diff b/w iterator and array - array is an object that has the methods to access, modify the array/object but iterator has
+// methods that allow only the accessing part, it does not allow changing or modifying the array elements
+const arrIterator = array3.keys();
+for(let ele of arrIterator){
+    console.log(ele);
+}
+
+// 20. map() - returns a new array with action specified on callback function provided executed on each element
+const mapArr = [50,40,30,20,10,[1,2,3],{name:'pix'}];
+const mappedArr = mapArr.map((ele) => ele*2);
+console.log(mappedArr);
+// Gives NaN for those values which it can't perform action, unlike filter which simply doesn't return those elements
+
+// 21. pop() - removes the last element and returns it
+const popArr = [1,2,3,4,5,6,7]
+const poppedEle = popArr.pop();
+console.log(poppedEle)
+
+// 22. push() - adds in the end of array
+popArr.push('newNum');
+console.log(popArr);
+
+// 23. reduce - executes a reducer function for an array and returns a single final result
+const newArr1 = [3,5,7,9];
+const redArr = newArr1.reduce((prev,curr) => prev+ curr,0)
+console.log(redArr);
+
+const newArr2 = [];
+const redArr2 = newArr2.reduce((prev,curr) => prev+curr,0)
+console.log(redArr2)
+// doesn't do anything for empty arrays
+// if no initial value is provided, then first element is taken as initial value
+// if only one element is present, and no initial value is provided, then that element is returned
+// if array is empty and initial value is provided then initial value is returned
+// if no initial value is provided and array is empty then it will throw an error
+
+// 24. reverse() - reverses the original array
+const origArr1 = [5,4,3,2,1];
+const revArr = origArr1.reverse();
+console.log(revArr)
+
+// 25. shift - removes first element from array and returns it
+const shiftRes = origArr1.shift();
+console.log(shiftRes);
+
+// 26. unshift - adds to the first index (0th index)
+origArr1.unshift(45)
+console.log(origArr1);
+
+// 27. slice - returns selected part of array as new array
+// takes start and end, starts from start upto but not including end
+// start - default is 0, end - default is last element
+const slicedArr = origArr1.slice(0,3)
+console.log(slicedArr)
+
+// 28. some - returns boolean based on whether a condition has been satisfied or not
+// if even one element satisfies the condition, then it returns true
+const someRes = origArr1.some((x) => x % 5 == 0)
+console.log(someRes);
+
+// 29. sort() - sorts the original array, doesn't return anything
+// It sorts in string based order, due to this, numbers are also sorted in alphabetical order
+// 100 comes before 3 because '1' is smaller than '3'
+const origArr4 = ["ban","app","zoo","car"]
+const origArr5 = [5,3,78,100,6,8]
+console.log(origArr4)
+console.log(origArr5)
+origArr4.sort();
+origArr5.sort();
+console.log(origArr4);
+console.log(origArr5)
+
+// 30. splice - add/removes elements from an array - mutates original array
+// takes index from where addition/removal has to be started, number of elements to be added/removed
+// and if adding, then elements that have to be added
+const beforeSplice = [1,2,3,4,5]
+beforeSplice.splice(1,2)
+console.log(beforeSplice)
+beforeSplice.splice(1,3,6,7,8)
+console.log(beforeSplice)
+beforeSplice.splice(0,3,11,12)
+console.log(beforeSplice)
+
+// 31. toString() - returns a string seperated by commas
+const strArr = ["hello","world","code"]
+const newStr1 = strArr.toString();
+console.log(newStr1);
+
+// 32. valueOf() - returns the value of object - in array it returns the array itself

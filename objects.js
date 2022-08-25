@@ -70,7 +70,7 @@ console.log(p2.hello())
 // A constructor function implicitly returns this object
 
 // Diff b/w object created using factory function and constructor function
-// Object created using constructor function has Object.prototype as its prototype whereas for objects created
+// Object created using factory function has Object.prototype as its prototype whereas for objects created
 // using constructor functions, has constructor function prototype as its prototype
 
 // Why 'new' keyword is important = It is important as if it is missed, then all the properties will be assigned
