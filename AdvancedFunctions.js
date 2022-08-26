@@ -122,3 +122,5 @@ console.log('---------------------------------------------------')
 // 3. Lodash - external dependency - copies everything from values, functions, maps, sets etc
 const lodashDeep = clonedeep(object1);
 console.log(lodashDeep);
+
+////////////////////////////////////////////////////////////////////////////////////
