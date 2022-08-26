@@ -149,3 +149,96 @@ f();
 // For a function, JS makes closure of it from where it is defined rather than where it is being called from.
 
 
+///////////////////////////////////////////////////////////////////////////
+
+// IIFE - Immediately Invoked Function expression - invokes as sson as it is encountered by JS engine without the need to call it.
+(function add(a,b){
+    console.log(a+b);
+})(2,3);
+
+// Another way of making an IIFE
+!function sub(a,b){
+    console.log(a-b)
+}(400,200);
+
+// Why IIFE is needed - because if all variables/functions were at global scope even when their requirement is once
+// then it would become too crowded and more memory would be consumed, also they won't be released until global
+// context is destroyed which will not happen much often, so they will simply take up more memory
+
+///////////////////////////////////////////////////////
+
+// Returning multiple values - 
+// When we have to return maultiple values , we return them as grouped either in arrays or objects
+function returnArr(a,b){
+    const sum = a+b;
+    const sub = a-b;
+    return [sum, sub];
+}
+const [num1,num2] = returnArr(9,5)
+console.log(num1,num2);
+
+function returnObj(){
+    let fname = "Mr";
+    let lname = "Park"
+    return {fname,lname}
+}
+
+const {fname, lname} = returnObj();
+console.log(fname, lname)
+
+/////////////////////////////////////////////////////////
+
+// Arrow functions - 
+// doesn't have its own this, this is taken in arrow using lexical scope
+const arrow1 = () => {
+    console.log("Arrow function");
+}
+
+// Where NOT to use arrow functions - 
+// 1. Event handlers - as "this" is bind with global object here, using arrow function will cause undefined for this.value
+// 2. Object methods - when defining methods inside an object, using arrow function will again cause "this" to be 
+// bounded to global object
+// 3. Prototype methods - Similar to above, using arrow in prototype will again bind it to outer lexical sope, so not correct
+// 4. Function that use argument in its parameters, as arguments parameter is not available with arrow functions.
+
+//////////////////////////////////////////////////////////////
+
+// JS rest and spread operator - 
+// 1. Rest - used to specify arguments when the count of them are unknown
+// always pass it as last arg , also it takes all args as arrays, so to access them use array notations
+// If no arg is pased, it returns an empty array
+function restFunc(a,b,...arg){
+    let sum = a+b;
+    for (let i=0;i<arg.length;i++){
+        sum +=  arg[i];
+    }
+    console.log(sum);
+}
+
+restFunc(2,3,4,5,6,7,8,9);
+// since arrow functions do not have arguments in it, so we have to rest operator.
+
+// 2. Spread operator - helps to copy an array/object into a new variable.
+// Only those objects are copied which are iterable
+const spreadArr = [1,2,3,4];
+const spreadArr2 = [...spreadArr];
+console.log(spreadArr)
+console.log(spreadArr2)
+spreadArr.push(10);
+console.log(spreadArr)
+console.log(spreadArr2)
+
+let spreadObj1 = {
+    name: 'abc',
+    id: 12,
+    enroll: true
+}
+
+let spreadObj2 = {...spreadObj1};
+console.log(spreadObj1);
+console.log(spreadObj2);
+spreadObj1.name = "xyz";
+console.log(spreadObj1);
+console.log(spreadObj2);
+
+// We can add multiple arrays as well as multiple objects using spread operator
