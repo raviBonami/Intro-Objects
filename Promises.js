@@ -360,3 +360,7 @@ const promise91 = new Promise((resolve, reject) => {
     console.log(err);
   });
 
+////////////////////////////////////////////////////////////////////////////////////
+
+// Functions can return a promise not data, but a promise that when data would be arrived, it would be let us know
+// as soon as data arrives, it invokes callback function in .then and in this .then we can catch the data that we received

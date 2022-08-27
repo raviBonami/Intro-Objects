@@ -242,3 +242,26 @@ console.log(spreadObj1);
 console.log(spreadObj2);
 
 // We can add multiple arrays as well as multiple objects using spread operator
+
+///////////////////////////////////////////////////////////////////////
+
+// Currying - Takes a function that takes more than one paramter and breaks it 
+// into a series of unary (one parameter function)
+// hence it takes only one parameter at a time
+
+function addx(x){
+    return function(b){
+        return function(c){
+            return a+b+c;
+        }
+    }
+}
+
+const ans1 = addx(5);   // stores the first inner function
+const ans2 = ans1(6);   // stores the second inner function
+const ans3 = ans2(7);   // stores the result of outer,1st inner,2nd inner
+console.log(ans3)
+
+const ans4 = addx(1)(2)(3);
+// All inner functions maintains the closure of outer variables and when 
+// called, use those outer variables with inner to return the result
