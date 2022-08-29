@@ -172,17 +172,6 @@ privateVar.getVals();
 
 // Private variables are not accessible from sub-classes (child classs can't access parent's private fields)
 
-
-
-
-
-
-
-
-
-
-
-
 const new2 = new newTarget('evan')
 console.log(new2);
 
